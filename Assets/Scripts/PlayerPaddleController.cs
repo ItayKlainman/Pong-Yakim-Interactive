@@ -3,14 +3,13 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerPaddleController : BasePaddleController
 {
-    public float paddleSpeed = 5f;
-    public float moveRange = 4f;
+    [SerializeField] private float speedMultiplier;
     
     private void FixedUpdate()
     {
         var input = Input.GetAxis("Vertical");
-        var velocity = new Vector2(0, input * paddleSpeed);
-        var yVelocity = Mathf.Clamp(velocity.y, -moveRange, moveRange);
+        var velocity = new Vector2(0, input * PADDLE_SPEED * speedMultiplier);
+        var yVelocity = Mathf.Clamp(velocity.y, -MOVE_RANGE, MOVE_RANGE);
         
         MovePaddle(new Vector2(rb.velocity.x, yVelocity));
     }

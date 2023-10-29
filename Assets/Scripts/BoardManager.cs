@@ -14,40 +14,48 @@ public class BoardManager : MonoBehaviour
         ballController.InitBall(HandleScore);
         uiController.Init(delegate
         {
-            playerScore = 0;
-            opponentScore = 0;
+            ResetScore();
             ballController.LaunchBall();
         });
     }
 
     private void HandleScore(ScoreSides side)
     {
-        var score = side == ScoreSides.Player ? playerScore : opponentScore;
-        score++;
-
-        if (side == ScoreSides.Player)
+        switch (side)
         {
-            playerScore++;
-        }
-        else
-        {
-            opponentScore++;
+            case ScoreSides.Player :
+                playerScore++;
+                break;
+            case ScoreSides.Opponent :
+                opponentScore++;
+                break;
         }
 
-        if (score >= scoreLimit)
+        CheckScoreStatus(side);
+    }
+
+    private void CheckScoreStatus(ScoreSides side)
+    {
+        if (playerScore >= scoreLimit || opponentScore >= scoreLimit)
         {
             RestartGame();
         }
 
+        var score = side == ScoreSides.Player ? playerScore : opponentScore;
+        
         uiController.UpdateUIScore(side, score);
     }
 
     private void RestartGame()
     {
+        ResetScore();
+        SceneManager.LoadScene(0);
+    }
+
+    private void ResetScore()
+    {
         playerScore = 0;
         opponentScore = 0;
-
-        SceneManager.LoadScene(0);
     }
 }
 
