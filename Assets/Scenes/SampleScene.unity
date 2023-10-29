@@ -1882,8 +1882,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdce2a8c657b943889f43db1231c7205, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  paddleSpeed: 10
-  moveRange: 2.4
+  speedMultiplier: 1.2
 --- !u!212 &1677926356
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2128,8 +2127,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ball: {fileID: 1148886854}
-  paddleSpeed: 10
-  moveRange: 2.4
 --- !u!212 &1947403927
 SpriteRenderer:
   m_ObjectHideFlags: 0

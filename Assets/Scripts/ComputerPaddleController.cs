@@ -1,6 +1,5 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
 public class ComputerPaddleController : BasePaddleController
 {
     [SerializeField] private Transform ball;
@@ -31,8 +30,5 @@ public class ComputerPaddleController : BasePaddleController
         {
             MovePaddle(Vector2.zero);
         }
-
-        var yVelocity = Mathf.Clamp(rb.velocity.y, -MOVE_RANGE, MOVE_RANGE);
-        MovePaddle(new Vector2(rb.velocity.x, yVelocity));
     }
 }
