@@ -10,11 +10,11 @@ public class BallController : MonoBehaviour
     private Vector2 direction;
     private Rigidbody2D rb;
 
-    private Action<ScoreSides> onScore;
+    private Action<ScoreSides> onGoalScore;
 
-    public void InitBall(Action<ScoreSides> OnScore)
+    public void InitBall(Action<ScoreSides> onScore)
     {
-        onScore = OnScore;
+        onGoalScore = onScore;
     }
 
     private void Awake()
@@ -63,6 +63,6 @@ public class BallController : MonoBehaviour
     private void UpdateScore(ScoreSides side)
     {
         transform.position = Vector3.zero;
-        onScore?.Invoke(side);
+        onGoalScore?.Invoke(side);
     }
 }
