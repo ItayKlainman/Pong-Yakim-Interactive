@@ -12,11 +12,13 @@ public class BoardManager : MonoBehaviour
     private void Start()
     {
         ballController.InitBall(HandleScore);
-        uiController.Init(delegate
-        {
-            ResetScore();
-            ballController.LaunchBall();
-        });
+    }
+
+    public void StartGame()
+    {
+        ResetScore();
+        ballController.LaunchBall();
+        uiController.ResetUI();
     }
 
     private void HandleScore(ScoreSides side)
