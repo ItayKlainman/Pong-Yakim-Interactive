@@ -5,8 +5,9 @@ using Random = UnityEngine.Random;
 [RequireComponent(typeof(Rigidbody2D))]
 public class BallController : MonoBehaviour
 {
-    public float speed = 5.0f;
-    [Range(-1, 1)] public float xOffset;
+    [SerializeField] float speed = 5.0f;
+    [Range(-1, 1)]
+    [SerializeField] float xOffset;
     private Vector2 direction;
     private Rigidbody2D rb;
 
