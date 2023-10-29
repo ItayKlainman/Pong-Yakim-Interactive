@@ -18,6 +18,6 @@ public class UIController : MonoBehaviour
     public void UpdateUIScore(ScoreSides side, int score)
     {
         var text = side == ScoreSides.Player ? playerScore : opponentScore;
-        text.SetText(score.ToString());
+        text.SetText(score.ToString("N0"));
     }
 }
